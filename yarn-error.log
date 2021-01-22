@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Sawarni Swaroop\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Program Files\Java\jre1.8.0_144\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Windows Live\Shared;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\flutter\flutter\bin;C:\Users\Sawarni Swaroop\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\Sawarni Swaroop\AppData\Local\Programs\Python\Python37-32;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\dotnet\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Users\Sawarni Swaroop\AppData\Local\Microsoft\WindowsApps;C:\Program Files\nodejs\;C:\Program Files (x86)\CodeBlocks\MinGW\bin;C:\Users\Sawarni Swaroop\AppData\Local\Android\Sdk\platform-tools;C:\Users\Sawarni Swaroop\AppData\Local\watchman;G:\Softwares\aircrack-ng-1.5.2-win\bin\64bit;C:\Users\Sawarni Swaroop\AppData\Roaming\npm;C:\Users\Sawarni Swaroop\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Sawarni Swaroop\.dotnet\tools;C:\Program Files\dotnet;
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  12.18.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\Sawarni Swaroop\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141091:19)
+      at Object.onceWrapper (events.js:421:28)
+      at ClientRequest.emit (events.js:315:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:709:9)
+      at Object.onceWrapper (events.js:421:28)
+      at TLSSocket.emit (events.js:327:22)
+      at TLSSocket.Socket._onTimeout (net.js:481:8)
+      at listOnTimeout (internal/timers.js:549:17)
+      at processTimers (internal/timers.js:492:7)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~40.0.0",
+      "expo-status-bar": "~1.0.3",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-web": "~0.13.12"
+    },
+    "devDependencies": {
+      "@babel/core": "~7.9.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
