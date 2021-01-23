@@ -7,18 +7,20 @@ export default function CustomInput({ placeholder, onChangeText }) {
       style={styles.textInput}
       placeholder={placeholder}
       onChangeText={onChangeText}
+      placeholderTextColor="gray"
     />
   );
 }
 
 const styles = StyleSheet.create({
   textInput: {
-    borderColor: "#747474",
+    borderColor: "gray",
     borderWidth: 1,
     padding: 5,
     borderRadius: 3,
     fontSize: 19,
     width: "100%",
     margin: 10,
+    color: "whitesmoke",
   },
 });

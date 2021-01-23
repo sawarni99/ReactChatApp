@@ -7,20 +7,21 @@ import Chat from "./pages/Chat";
 
 export default function App() {
   const Stack = createStackNavigator();
+
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="home"
-            component={Home}
-            options={{ title: "Home" }}
-          />
-          <Stack.Screen
-            name="chat"
-            component={Chat}
-            options={{ title: "Chat" }}
-          />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              elevation: 10,
+              opacity: 0.95,
+              backgroundColor: "#6930c3",
+            },
+          }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Chat" component={Chat} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -30,6 +31,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "whitesmoke",
   },
 });

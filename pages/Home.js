@@ -25,5 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    backgroundColor: "#252525",
+    opacity: 0.95,
   },
 });
