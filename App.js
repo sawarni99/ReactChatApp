@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import BackButton from "./components/BackButton";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -26,7 +27,13 @@ export default function App() {
           }}
         >
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Chat" component={Chat} />
+          <Stack.Screen
+            options={({ navigation }) => ({
+              headerLeft: () => <BackButton navigation={navigation} />,
+            })}
+            name="Chat"
+            component={Chat}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

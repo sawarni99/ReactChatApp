@@ -19,6 +19,7 @@ export default function Home({ navigation }) {
     joinClicked: false,
   });
   const ENDPOINT = "http://192.168.29.112:2500";
+  const SUCCESS_MESSAGE = "Join a room";
 
   // Destructuring data...
   const { name, room, joinClicked, roomJoined } = inputs;
@@ -37,8 +38,8 @@ export default function Home({ navigation }) {
       if (socket) {
         socket.emit("JOIN_ROOM", { name, room }, (data) => {
           console.log(data);
-          if (data === "Join a room") {
-            navigation.navigate("Chat");
+          if (data === SUCCESS_MESSAGE) {
+            navigation.navigate("Chat", { socket });
           }
         });
       }
