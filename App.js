@@ -17,11 +17,16 @@ export default function App() {
               elevation: 10,
               opacity: 0.95,
               backgroundColor: "#6930c3",
+              height: 90,
+            },
+            headerTintColor: "whitesmoke",
+            headerTitleStyle: {
+              fontSize: 25,
             },
           }}
         >
-          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Chat" component={Chat} />
+          <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
