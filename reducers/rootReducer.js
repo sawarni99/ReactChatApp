@@ -1,11 +1,16 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import socketReducer from "./socketReducer";
 
-const AppReducers = combineReducers();
+const middleware = [thunk];
 
-const rootReducer = (state, action) => {
-  return AppReducers(state, action);
-};
+const rootReducers = combineReducers({
+  socketData: socketReducer,
+});
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducers,
+  compose(applyMiddleware(...middleware))
+);
 
 export default store;
