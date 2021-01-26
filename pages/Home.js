@@ -1,51 +1,34 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
+import { connect } from "react-redux";
 import Button from "../components/CustomButton";
-import io from "socket.io-client";
 import Input from "../components/CustomInput";
+import { connectSocket } from "../actions/socketActions";
 
-export default function Home({ navigation }) {
+function Home({ navigation, connectSocket, socketData }) {
   // Initializations...
-  const [socket, setSocket] = useState(null);
+  let socket = null;
   const [inputs, setInputs] = useState({
     name: "",
     room: "",
     joinClicked: false,
   });
   const ENDPOINT = "http://192.168.29.112:2500";
-  const SUCCESS_MESSAGE = "Join a room";
 
   // Destructuring data...
   const { name, room, joinClicked, roomJoined } = inputs;
 
+  // Getting socket...
+  if (!socketData.error) {
+    socket = socketData.data;
+  }
+
   // Connecting to socket....
   useEffect(() => {
-    const socketIO = io(ENDPOINT);
-    socketIO.on("CONNECTION_ACK", () => {
-      setSocket(socketIO);
-    });
+    connectSocket(ENDPOINT);
   }, [ENDPOINT]);
 
-  // Joining a room...
-  useEffect(() => {
-    if (joinClicked && name !== "" && room !== "") {
-      if (socket) {
-        socket.emit("JOIN_ROOM", { name, room }, (data) => {
-          console.log(data);
-          if (data === SUCCESS_MESSAGE) {
-            navigation.navigate("Chat", { socket });
-          }
-        });
-      }
-      setInputs({ room: "", name: "", joinClicked: false });
-    }
-  });
+  // TODO: Joining a room...
 
   return (
     <View style={styles.homeView}>
@@ -76,3 +59,11 @@ const styles = StyleSheet.create({
     opacity: 0.95,
   },
 });
+
+const mapStateToProps = (state) => {
+  return {
+    socketData: state.socketData,
+  };
+};
+
+export default connect(mapStateToProps, { connectSocket })(Home);
