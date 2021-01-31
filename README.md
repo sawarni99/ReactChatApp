@@ -18,3 +18,5 @@ where two users can interact with each other using messages.
   * Socket IO
   
 ## Screenshots
+<img src="https://github.com/sawarni99/ReactChatApp/blob/master/screenshots/1.jpeg" alt="" height="500"/>
+<img src="https://github.com/sawarni99/ReactChatApp/blob/master/screenshots/2.jpeg" alt="" height="500"/>
