@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const ChatInput = ({ onChangeText, placeholder, onSubmit }) => {
+const ChatInput = ({ onChangeText, placeholder, onSubmit, value }) => {
   return (
     <View style={styles.chatInputContainer}>
       <TextInput
@@ -11,6 +11,7 @@ const ChatInput = ({ onChangeText, placeholder, onSubmit }) => {
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor="gray"
+        value={value}
       />
       <TouchableOpacity style={styles.chatSendIcon} onPress={onSubmit}>
         <Ionicons name="md-send-sharp" size={30} color="whitesmoke" />

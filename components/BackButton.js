@@ -11,6 +11,8 @@ const BackButton = ({ navigation, socketData, route }) => {
       socket.emit("LEAVE_ROOM", { name }, (data) => {
         if (data.success) {
           navigation.goBack();
+        } else {
+          navigation.goBack();
         }
       });
     } else {

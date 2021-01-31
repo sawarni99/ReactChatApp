@@ -32,7 +32,7 @@ function Home({ navigation, connectSocket, socketData }) {
     if (socket) {
       socket.emit("JOIN_ROOM", { name, room }, (data) => {
         if (data.success) {
-          navigation.navigate("Chat", { name });
+          navigation.navigate("Chat", { name, room });
         }
       });
     }

@@ -1,37 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import ChatMessage from "../components/ChatMessage";
 import Input from "../components/ChatInput";
+import { sendMsg } from "../actions/chatActions";
+import { connect } from "react-redux";
 
-const Chat = () => {
+const Chat = ({ sendMsg, route, socketData, chatData }) => {
+  const { name, room } = route.params;
+  const socket = socketData.data;
+  const [msg, setMsg] = useState("");
+
   // Sample messages....
-  const listMessages = [
-    { key: "1", sender: "you", message: "hii how are you" },
-    { key: "2", sender: "gopi", message: "I am fine how are you" },
-    {
-      key: "3",
-      sender: "you",
-      message: "I will say blah blah then please replay blah blah....",
-    },
-    { key: "4", sender: "gopi", message: "OK I will reply blah blah..." },
-    {
-      key: "5",
-      sender: "you",
-      message: "My name is gopi bahu... say hello to me",
-    },
-    { key: "6", sender: "gopi", message: "Hello" },
-    {
-      key: "7",
-      sender: "you",
-      message:
-        "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah !!!!",
-    },
-  ];
+  const listMessages = chatData.chats;
+  console.log(listMessages);
+
+  const onPressSend = () => {
+    console.log(name, room);
+    if (socket) {
+      sendMsg(socket, { msg, room });
+    }
+  };
 
   return (
     <View style={styles.chat}>
       <View style={styles.chatDetails}>
-        <Text style={styles.chatName}>Gopi Bahu</Text>
+        <Text style={styles.chatName}>{room}</Text>
       </View>
       <View style={styles.chatArea}>
         <FlatList
@@ -42,13 +35,25 @@ const Chat = () => {
         />
       </View>
       <View style={styles.chatBox}>
-        <Input placeholder="Enter a message to send..." />
+        <Input
+          placeholder="Enter a message to send..."
+          onSubmit={onPressSend}
+          onChangeText={(value) => setMsg(value)}
+          value={msg}
+        />
       </View>
     </View>
   );
 };
 
-export default Chat;
+const mapStateToProps = (state) => {
+  return {
+    socketData: state.socketData,
+    chatData: state.chatData,
+  };
+};
+
+export default connect(mapStateToProps, { sendMsg })(Chat);
 
 const styles = StyleSheet.create({
   chat: {
