@@ -11,12 +11,11 @@ function Home({ navigation, connectSocket, socketData }) {
   const [inputs, setInputs] = useState({
     name: "",
     room: "",
-    joinClicked: false,
   });
   const ENDPOINT = "http://192.168.29.112:2500";
 
   // Destructuring data...
-  const { name, room, joinClicked, roomJoined } = inputs;
+  const { name, room } = inputs;
 
   // Getting socket...
   if (!socketData.error) {
@@ -28,7 +27,16 @@ function Home({ navigation, connectSocket, socketData }) {
     connectSocket(ENDPOINT);
   }, [ENDPOINT]);
 
-  // TODO: Joining a room...
+  // Joining a room...
+  const onPressJoin = () => {
+    if (socket) {
+      socket.emit("JOIN_ROOM", { name, room }, (data) => {
+        if (data.success) {
+          navigation.navigate("Chat", { name });
+        }
+      });
+    }
+  };
 
   return (
     <View style={styles.homeView}>
@@ -42,9 +50,7 @@ function Home({ navigation, connectSocket, socketData }) {
         onChangeText={(text) => setInputs({ ...inputs, room: text })}
         value={room}
       />
-      <Button onPress={() => setInputs({ ...inputs, joinClicked: true })}>
-        Join
-      </Button>
+      <Button onPress={onPressJoin}>Join</Button>
     </View>
   );
 }

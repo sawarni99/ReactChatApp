@@ -30,8 +30,10 @@ export default function App() {
           >
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen
-              options={({ navigation }) => ({
-                headerLeft: () => <BackButton navigation={navigation} />,
+              options={({ navigation, route }) => ({
+                headerLeft: () => (
+                  <BackButton navigation={navigation} route={route} />
+                ),
               })}
               name="Chat"
               component={Chat}

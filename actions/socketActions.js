@@ -22,7 +22,7 @@ const socketFailure = (data) => {
 
 export const connectSocket = (endpoint) => {
   return (dispatch, getState) => {
-    dispatch(socketRequest);
+    dispatch(socketRequest());
     const socket = io(endpoint);
     socket.on("CONNECTION_ACK", () => {
       dispatch(socketSuccess(socket));
