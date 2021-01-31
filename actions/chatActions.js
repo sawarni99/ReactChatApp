@@ -33,3 +33,13 @@ export const sendMsg = (socket, { msg, room }) => {
     }
   };
 };
+
+export const rcvMsg = (socket) => {
+  return (dispatch, getState) => {
+    if (socket) {
+      socket.on("RCV_MSG", ({ msg }) => {
+        dispatch(chatSuccess(msg, "sender"));
+      });
+    }
+  };
+};

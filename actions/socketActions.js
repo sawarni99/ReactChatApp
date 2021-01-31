@@ -1,4 +1,5 @@
 import io from "socket.io-client";
+import { rcvMsg } from "./chatActions";
 
 const socketRequest = () => {
   return {
@@ -26,6 +27,7 @@ export const connectSocket = (endpoint) => {
     const socket = io(endpoint);
     socket.on("CONNECTION_ACK", () => {
       dispatch(socketSuccess(socket));
+      dispatch(rcvMsg(socket));
     });
   };
 };

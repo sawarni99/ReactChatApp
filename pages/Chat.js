@@ -9,16 +9,15 @@ const Chat = ({ sendMsg, route, socketData, chatData }) => {
   const { name, room } = route.params;
   const socket = socketData.data;
   const [msg, setMsg] = useState("");
-
-  // Sample messages....
   const listMessages = chatData.chats;
-  console.log(listMessages);
 
   const onPressSend = () => {
-    console.log(name, room);
-    if (socket) {
-      sendMsg(socket, { msg, room });
+    if (msg !== "") {
+      if (socket) {
+        sendMsg(socket, { msg, room });
+      }
     }
+    setMsg("");
   };
 
   return (
